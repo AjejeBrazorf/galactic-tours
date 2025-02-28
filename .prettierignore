@@ -1,0 +1,18 @@
+# Build directories
+dist/
+storybook-static/
+.next/
+out/
+build/
+coverage/
+
+# Dependencies
+node_modules/
+
+# Cache
+.turbo/
+.cache/
+
+# Specific app build folders
+apps/*/public/build/
+packages/*/dist/
