@@ -16,11 +16,10 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --config eslint.config.mjs --max-warnings 0",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
@@ -29,6 +28,7 @@
     "typescript": "5.5.4"
   },
   "dependencies": {
+    "@repo/eslint-config": "workspace:*",
     "react": "^18.2.0"
   },
   "publishConfig": {
