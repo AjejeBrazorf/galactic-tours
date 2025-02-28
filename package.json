@@ -7,10 +7,21 @@
     "clean": "turbo run clean",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint -- --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md,js,json,css,scss}\"",
-    "check-types": "turbo run check-types"
+    "lint:staged": "lint-staged",
+    "lint:commit": "commitlint --edit ",
+    "format": "prettier --write \"**/*.{ts,tsx,md,css,scss}\"",
+    "check-types": "turbo run check-types",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,md,css,scss}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "prettier": "3.5.0",
     "turbo": "^2.4.3",
     "typescript": "5.7.3"
@@ -18,5 +29,10 @@
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1"
   }
 }
