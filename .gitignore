@@ -22,10 +22,10 @@ coverage
 .vercel
 
 # Next.js
-.next/
-out/
-build
-dist
+*/**/.next/
+*/**/out/
+*/**/build
+*/**/dist
 
 # TypeScript
 *.tsbuildinfo
@@ -38,7 +38,13 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+.changeset
 
 #IDEs
 .idea
 .code
+
+
+# Storybook
+*/**/storybook-static
+
