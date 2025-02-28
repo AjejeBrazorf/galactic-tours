@@ -13,7 +13,6 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@storybook/test": "^8.6.2",
-    "eslint-plugin-react-refresh": "^0.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -28,6 +27,7 @@
     "@storybook/react-vite": "^8.2.6",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "9.21.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.14.0",
     "serve": "^14.2.1",
     "storybook": "^8.2.6",
