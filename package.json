@@ -33,5 +33,11 @@
   "dependencies": {
     "@commitlint/cli": "19.7.1",
     "@commitlint/config-conventional": "19.7.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "path-to-regexp@>=2.0.0 <3.3.0": ">=3.3.0",
+      "esbuild@<=0.24.2": ">=0.25.0"
+    }
   }
 }

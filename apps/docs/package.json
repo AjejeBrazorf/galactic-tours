@@ -8,30 +8,30 @@
     "build": "storybook build --docs",
     "preview-storybook": "serve storybook-static",
     "clean": "rm -rf .turbo node_modules",
-    "lint": "eslint src/stories/**/*.stories.tsx --max-warnings 0"
+    "lint": "eslint src/stories/**/*.stories.tsx --max-warnings 0 --no-error-on-unmatched-pattern"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@storybook/test": "8.6.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@storybook/addon-actions": "8.2.6",
-    "@storybook/addon-essentials": "8.2.6",
+    "@storybook/addon-actions": "8.6.2",
+    "@storybook/addon-essentials": "8.6.2",
     "@storybook/addon-interactions": "8.6.2",
-    "@storybook/addon-links": "8.2.6",
-    "@storybook/react": "8.2.6",
-    "@storybook/react-vite": "8.2.6",
+    "@storybook/addon-links": "8.6.2",
+    "@storybook/react": "8.6.2",
+    "@storybook/react-vite": "8.6.2",
     "@vitejs/plugin-react": "4.2.1",
     "eslint": "9.21.0",
     "eslint-plugin-react-refresh": "0.4.19",
     "globals": "15.14.0",
     "serve": "14.2.1",
-    "storybook": "8.2.6",
+    "storybook": "8.6.2",
     "typescript": "5.5.4",
-    "vite": "5.1.4"
+    "vite": "6.0.9"
   }
 }

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { expect, userEvent, within } from '@storybook/test'
-import { Button } from '@repo/ui'
+
+import { Button } from './index'
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',

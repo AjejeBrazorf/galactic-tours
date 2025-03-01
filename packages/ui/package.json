@@ -21,15 +21,17 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "tsup": "^8.0.2",
+    "@types/react": "18.2.61",
+    "@types/react-dom": "18.2.19",
     "eslint": "9.21.0",
+    "tsup": "8.4.0",
     "typescript": "5.5.4"
   },
   "dependencies": {
     "@repo/eslint-config": "workspace:*",
-    "react": "^18.2.0"
+    "@storybook/react": "8.2.6",
+    "@storybook/test": "8.6.2",
+    "react": "18.2.0"
   },
   "publishConfig": {
     "access": "public"
