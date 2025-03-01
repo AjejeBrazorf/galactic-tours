@@ -11,6 +11,7 @@
     "lint:commit": "commitlint --edit ",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,scss}\"",
     "check-types": "turbo run check-types",
+    "preview-storybook": "turbo run preview-storybook",
     "prepare": "husky"
   },
   "lint-staged": {

@@ -83,6 +83,8 @@ export const config = [
           json: 'always',
           svg: 'always',
           riv: 'always',
+          css: 'always',
+          scss: 'always',
         },
       ],
       'import/no-extraneous-dependencies': [

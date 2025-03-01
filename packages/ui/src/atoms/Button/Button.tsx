@@ -1,5 +1,7 @@
 import type { FC, ReactNode } from 'react'
+import { clsx } from 'clsx'
 
+import styles from './Button.module.scss'
 interface ButtonProps {
   children: ReactNode
   variant?: 'primary' | 'secondary'
@@ -15,13 +17,10 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       data-testid={dataTestId}
-      style={{
-        border: 0,
-        borderRadius: '8px',
-        padding: '10px 20px',
-        color: 'white',
-        backgroundColor: variant === 'primary' ? 'blue' : 'green',
-      }}
+      className={clsx(styles.root, {
+        [`${styles.primary}`]: variant === 'primary',
+        [`${styles.secondary}`]: variant === 'secondary',
+      })}
       onClick={onClick}>
       {children}
     </button>

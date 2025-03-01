@@ -22,7 +22,12 @@ const config: StorybookConfig = {
 
     config.resolve.alias['@repo/ui'] = resolve(
       __dirname,
-      '../../../packages/ui/dist/index.mjs'
+      '../../../packages/ui/dist'
+    )
+
+    config.resolve.alias['@repo/ui/theme.css'] = resolve(
+      __dirname,
+      '../../../packages/ui/dist/theme.css'
     )
 
     return config

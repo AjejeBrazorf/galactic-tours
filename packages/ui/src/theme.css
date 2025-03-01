@@ -1,0 +1,204 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-mono:
+    system-ui, ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --easing: linear(
+    0,
+    0.002,
+    0.01 3.6%,
+    0.034,
+    0.074 9.1%,
+    0.128 11.4%,
+    0.194 13.4%,
+    0.271 15%,
+    0.344 16.1%,
+    0.544,
+    0.66 20.6%,
+    0.717 22.4%,
+    0.765 24.6%,
+    0.808 27.3%,
+    0.845 30.4%,
+    0.883 35.1%,
+    0.916 40.6%,
+    0.942 47.2%,
+    0.963 55%,
+    0.979 64%,
+    0.991 74.4%,
+    0.998 86.4%,
+    1
+  );
+  --easing-duration: 0.25s;
+  --primary: #5260ff;
+  --secondary: #7cd584;
+  --light: #cbcfff;
+  --dark: #3943b3;
+  --info: #66a4ff;
+  --warning: #dcc23a;
+  --error: #c03e6a;
+  --success: #3ea28b;
+
+  --color-primary-900: #c9cdff;
+  --color-primary-900-contrast: #000;
+  --color-primary-800: #acb2ff;
+  --color-primary-800-contrast: #000;
+  --color-primary-700: #8f98ff;
+  --color-primary-700-contrast: #000;
+  --color-primary-600: #727dff;
+  --color-primary-600-contrast: #000;
+  --color-primary-500: #5260ff;
+  --color-primary-500-contrast: #fff;
+  --color-primary-400: #434ed0;
+  --color-primary-400-contrast: #fff;
+  --color-primary-300: #353ea5;
+  --color-primary-300-contrast: #fff;
+  --color-primary-200: #272e7b;
+  --color-primary-200-contrast: #fff;
+  --color-primary-100: #1a1e50;
+  --color-primary-100-contrast: #fff;
+
+  --color-secondary-900: #d6f2d8;
+  --color-secondary-900-contrast: #000;
+  --color-secondary-800: #c0ebc4;
+  --color-secondary-800-contrast: #000;
+  --color-secondary-700: #aae4af;
+  --color-secondary-700-contrast: #000;
+  --color-secondary-600: #94dd9b;
+  --color-secondary-600-contrast: #000;
+  --color-secondary-500: #7cd584;
+  --color-secondary-500-contrast: #000;
+  --color-secondary-400: #65ae6c;
+  --color-secondary-400-contrast: #000;
+  --color-secondary-300: #508a56;
+  --color-secondary-300-contrast: #fff;
+  --color-secondary-200: #3c6740;
+  --color-secondary-200-contrast: #fff;
+  --color-secondary-100: #27432a;
+  --color-secondary-100-contrast: #fff;
+
+  --color-light-900: #eaecff;
+  --color-light-900-contrast: #000;
+  --color-light-800: #e2e4ff;
+  --color-light-800-contrast: #000;
+  --color-light-700: #d9dcff;
+  --color-light-700-contrast: #000;
+  --color-light-600: #d0d4ff;
+  --color-light-600-contrast: #000;
+  --color-light-500: #cbcfff;
+  --color-light-500-contrast: #000;
+  --color-light-400: #b7bae6;
+  --color-light-400-contrast: #000;
+  --color-light-300: #9598bb;
+  --color-light-300-contrast: #000;
+  --color-light-200: #737591;
+  --color-light-200-contrast: #fff;
+  --color-light-100: #515366;
+  --color-light-100-contrast: #fff;
+
+  --color-dark-900: #ececec;
+  --color-dark-900-contrast: #000;
+  --color-dark-800: #d9d9d9;
+  --color-dark-800-contrast: #000;
+  --color-dark-700: #c7c7c7;
+  --color-dark-700-contrast: #000;
+  --color-dark-600: #b4b4b4;
+  --color-dark-600-contrast: #000;
+  --color-dark-500: #8f8f8f;
+  --color-dark-500-contrast: #000;
+  --color-dark-400: #606060;
+  --color-dark-400-contrast: #fff;
+  --color-dark-300: #484848;
+  --color-dark-300-contrast: #fff;
+  --color-dark-200: #303030;
+  --color-dark-200-contrast: #fff;
+  --color-dark-100: #181818;
+  --color-dark-100-contrast: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+
+    --color-dark-100: #ececec;
+    --color-dark-100-contrast: #000;
+    --color-dark-200: #d9d9d9;
+    --color-dark-200-contrast: #000;
+    --color-dark-300: #c7c7c7;
+    --color-dark-300-contrast: #000;
+    --color-dark-400: #b4b4b4;
+    --color-dark-400-contrast: #000;
+    --color-dark-500: #8f8f8f;
+    --color-dark-500-contrast: #000;
+    --color-dark-600: #606060;
+    --color-dark-600-contrast: #fff;
+    --color-dark-700: #484848;
+    --color-dark-700-contrast: #fff;
+    --color-dark-800: #303030;
+    --color-dark-800-contrast: #fff;
+    --color-dark-900: #181818;
+    --color-dark-900-contrast: #fff;
+
+    --color-light-100: #eaecff;
+    --color-light-100-contrast: #000;
+    --color-light-200: #e2e4ff;
+    --color-light-200-contrast: #000;
+    --color-light-300: #d9dcff;
+    --color-light-300-contrast: #000;
+    --color-light-400: #d0d4ff;
+    --color-light-400-contrast: #000;
+    --color-light-500: #cbcfff;
+    --color-light-500-contrast: #000;
+    --color-light-600: #b7bae6;
+    --color-light-600-contrast: #000;
+    --color-light-700: #9598bb;
+    --color-light-700-contrast: #000;
+    --color-light-800: #737591;
+    --color-light-800-contrast: #fff;
+    --color-light-900: #515366;
+    --color-light-900-contrast: #fff;
+
+    --color-primary-100: #c9cdff;
+    --color-primary-100-contrast: #000;
+    --color-primary-200: #acb2ff;
+    --color-primary-200-contrast: #000;
+    --color-primary-300: #8f98ff;
+    --color-primary-300-contrast: #000;
+    --color-primary-400: #727dff;
+    --color-primary-400-contrast: #000;
+    --color-primary-500: #5260ff;
+    --color-primary-500-contrast: #fff;
+    --color-primary-600: #434ed0;
+    --color-primary-600-contrast: #fff;
+    --color-primary-700: #353ea5;
+    --color-primary-700-contrast: #fff;
+    --color-primary-800: #272e7b;
+    --color-primary-800-contrast: #fff;
+    --color-primary-900: #1a1e50;
+    --color-primary-900-contrast: #fff;
+
+    --color-secondary-100: #d6f2d8;
+    --color-secondary-100-contrast: #000;
+    --color-secondary-200: #c0ebc4;
+    --color-secondary-200-contrast: #000;
+    --color-secondary-300: #aae4af;
+    --color-secondary-300-contrast: #000;
+    --color-secondary-400: #94dd9b;
+    --color-secondary-400-contrast: #000;
+    --color-secondary-500: #7cd584;
+    --color-secondary-500-contrast: #000;
+    --color-secondary-600: #65ae6c;
+    --color-secondary-600-contrast: #000;
+    --color-secondary-700: #508a56;
+    --color-secondary-700-contrast: #fff;
+    --color-secondary-800: #3c6740;
+    --color-secondary-800-contrast: #fff;
+    --color-secondary-900: #27432a;
+    --color-secondary-900-contrast: #fff;
+  }
+  html {
+    color-scheme: dark;
+  }
+}

@@ -4,8 +4,11 @@
     "moduleResolution": "bundler",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "outDir": "dist"
+    "rootDir": "./src",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist", "build", "node_modules"]
 }
