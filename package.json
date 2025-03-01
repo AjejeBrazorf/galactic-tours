@@ -20,10 +20,10 @@
     ]
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
+    "husky": "9.1.7",
+    "lint-staged": "15.4.3",
     "prettier": "3.5.0",
-    "turbo": "^2.4.3",
+    "turbo": "2.4.4",
     "typescript": "5.7.3"
   },
   "packageManager": "pnpm@9.0.0",
@@ -31,8 +31,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "-": "^0.0.1",
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1"
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1"
   }
 }
