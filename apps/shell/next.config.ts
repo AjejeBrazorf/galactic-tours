@@ -6,6 +6,7 @@ const nextConfig = {
   webpack: (config) => {
     return config
   },
+  transpilePackages: ['@repo/ui', 'destinations'],
 }
 
 export default nextConfig

@@ -29,6 +29,7 @@ export const nextJsConfig = [
   {
     plugins: {
       '@next/next': pluginNext,
+      'react-hooks': pluginReactHooks,
     },
     rules: {
       ...pluginNext.configs.recommended.rules,
@@ -36,9 +37,6 @@ export const nextJsConfig = [
     },
   },
   {
-    plugins: {
-      'react-hooks': pluginReactHooks,
-    },
     settings: { react: { version: 'detect' } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,

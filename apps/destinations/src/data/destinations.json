@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Mars",
+    "position": [2, 0, 0],
+    "color": "red",
+    "radius": 0.5,
+    "description": "The Red Planet"
+  },
+  {
+    "id": 2,
+    "name": "Venus",
+    "position": [-2, 1, 0],
+    "color": "orange",
+    "radius": 0.4,
+    "description": "The Hottest Planet"
+  },
+  {
+    "id": 3,
+    "name": "Jupiter",
+    "position": [0, 2, -1],
+    "color": "brown",
+    "radius": 0.7,
+    "description": "The Gas Giant"
+  },
+  {
+    "id": 4,
+    "name": "Europa",
+    "position": [0, -2, 1],
+    "color": "lightblue",
+    "radius": 0.3,
+    "description": "Jupiter's Moon"
+  },
+  {
+    "id": 5,
+    "name": "Kepler-452b",
+    "position": [-3, -1, 2],
+    "color": "green",
+    "radius": 0.5,
+    "description": "Earth's Cousin"
+  }
+]

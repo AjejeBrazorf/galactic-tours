@@ -109,6 +109,12 @@ export const config = [
     },
   },
   {
-    ignores: ['dist/**', 'node_modules/**', '.turbo/**', '**/*.config.js'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      '.turbo/**',
+      '**/*.config.js',
+      '**/*.md',
+    ],
   },
 ]

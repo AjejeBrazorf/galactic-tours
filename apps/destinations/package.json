@@ -1,0 +1,32 @@
+{
+  "name": "destinations",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:wc": "tsc -p tsconfig.wc.json && node build.js",
+    "start": "next start",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint ."
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.96.4",
+    "@react-three/fiber": "^8.15.16",
+    "@types/three": "^0.160.0",
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.160.0",
+    "three-stdlib": "^2.35.14"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.10",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "esbuild": "^0.25.0",
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3"
+  }
+}

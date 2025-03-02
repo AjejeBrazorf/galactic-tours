@@ -37,7 +37,7 @@ export const Primary: Story = {
   args: {
     children: PRIMARY_BUTTON.label,
     dataTestId: PRIMARY_BUTTON.dataTestId,
-    onClick: () => console.log('primary button clicked'),
+    onClick: () => console.debug('primary button clicked'),
     variant: 'primary',
   },
   play: async ({ canvasElement }) =>
@@ -53,7 +53,7 @@ export const Secondary: Story = {
   args: {
     children: SECONDARY_BUTTON.label,
     dataTestId: SECONDARY_BUTTON.dataTestId,
-    onClick: () => console.log('button clicked'),
+    onClick: () => console.debug('button clicked'),
     variant: 'secondary',
   },
   play: async ({ canvasElement }) =>

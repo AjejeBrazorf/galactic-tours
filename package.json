@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:shell": "turbo run build --filter=shell",
     "dev": "turbo run dev",
+    "dev:shell": "turbo run dev --filter=shell",
     "clean": "turbo run clean",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint -- --fix",
@@ -15,8 +17,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{ts,tsx,md,css,scss}": [
-      "eslint --fix",
+    "*.{ts,tsx}": [
       "prettier --write"
     ]
   },
