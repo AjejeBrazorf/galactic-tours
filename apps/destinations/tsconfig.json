@@ -1,11 +1,21 @@
 {
-  "extends": "../../packages/typescript-config/nextjs.json",
+  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "rootDir": "./src",
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "types": ["node", "three"],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-} 
+  "include": ["src"],
+  "exclude": ["dist", "build", "node_modules"]
+}

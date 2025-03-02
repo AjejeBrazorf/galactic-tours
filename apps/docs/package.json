@@ -13,8 +13,8 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@storybook/test": "8.6.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "19.1.0-canary-22e39ea7-20250225",
+    "react-dom": "19.1.0-canary-22e39ea7-20250225"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

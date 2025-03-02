@@ -13,8 +13,8 @@
     "@repo/ui": "workspace:*",
     "destinations": "workspace:*",
     "next": "15.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "19.1.0-canary-22e39ea7-20250225",
+    "react-dom": "19.1.0-canary-22e39ea7-20250225"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
