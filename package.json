@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "build:shell": "turbo run build --filter=shell",
+    "build:shell": "turbo run build --filter=shell...",
     "dev": "turbo run dev",
     "dev:shell": "turbo run dev --filter=shell",
     "clean": "turbo run clean",
