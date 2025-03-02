@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { clsx } from 'clsx'
 
 import styles from './Button.module.scss'
@@ -8,12 +8,12 @@ interface ButtonProps {
   onClick?: () => void
   dataTestId?: string
 }
-export const Button: FC<ButtonProps> = ({
+export const Button = ({
   children,
   onClick,
   variant = 'primary',
   dataTestId,
-}) => {
+}: ButtonProps) => {
   return (
     <button
       data-testid={dataTestId}

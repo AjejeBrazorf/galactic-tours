@@ -1,17 +1,9 @@
-import type { Preview } from '@storybook/react'
-import { Layout } from '@repo/ui'
-
 import '@repo/ui/theme.css'
+import type { Preview } from '@storybook/react'
 
 const preview: Preview = {
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <Layout>
-        <Story />
-      </Layout>
-    ),
-  ],
+  decorators: [(Story) => <Story />],
 }
 
 export default preview
