@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Extend the JSX.IntrinsicElements directly without creating unused interfaces
 declare global {
@@ -66,8 +66,14 @@ const WebComponentContainer: React.FC = () => {
 
 // Use next/dynamic to create a client-only component
 const DynamicMapComponent = dynamic(
-  () => Promise.resolve(WebComponentContainer),
-  { ssr: false }
+  () =>
+    Promise.resolve(WebComponentContainer) as unknown as Promise<{
+      default: React.ComponentType<Record<string, unknown>>
+    }>,
+  {
+    ssr: false,
+    loading: () => <div>Loading Map Component...</div>,
+  }
 )
 
 const MapWrapper: React.FC = () => {

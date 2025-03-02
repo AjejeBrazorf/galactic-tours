@@ -1,12 +1,13 @@
-'use client'
+import dynamic from 'next/dynamic'
 
-import styles from './page.module.scss'
-
-import Map from '@/components/Map'
+const Map = dynamic(
+  () => import('@/components/Map/Map').then((mod) => mod.default),
+  { ssr: false }
+)
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       <Map />
     </main>
   )

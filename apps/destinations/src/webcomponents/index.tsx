@@ -1,17 +1,14 @@
-import type ReactDOM from 'react-dom/client'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
+import Map from '../components/Map/Map'
 
-import Map from '../components/Map'
-
-// Import specific functions or components from libraries instead of bare imports
-// These imports ensure the libraries are included in the bundle
-
-// Copy any styles needed for the Map component
-const styles = `
+// CSS for base web component structure only
+const baseStyles = `
   :host {
     display: block;
     width: 100%;
     height: 100%;
+    contain: content;
   }
   div {
     width: 100%;
@@ -19,9 +16,13 @@ const styles = `
   }
 `
 
-// Create a self-contained web component with its own React instance
+// Create a wrapper for the Map component to inject the web component context
+const MapWrapper: React.FC = () => {
+  return <Map isWebComponent={true} />
+}
+
 class DestinationsMap extends HTMLElement {
-  private root: ReactDOM.Root | null = null
+  private root: ReturnType<typeof createRoot> | null = null
   private shadowContainer: HTMLDivElement | null = null
 
   connectedCallback() {
@@ -29,9 +30,9 @@ class DestinationsMap extends HTMLElement {
       // Create shadow DOM for isolation
       const shadow = this.attachShadow({ mode: 'open' })
 
-      // Add styles to shadow DOM
+      // Add base styles
       const styleElement = document.createElement('style')
-      styleElement.textContent = styles
+      styleElement.textContent = baseStyles
       shadow.appendChild(styleElement)
 
       // Create container for React
@@ -44,8 +45,8 @@ class DestinationsMap extends HTMLElement {
       setTimeout(() => {
         if (this.shadowContainer) {
           this.root = createRoot(this.shadowContainer)
-          this.root.render(<Map />)
-          console.debug('Destinations map component rendered successfully')
+          this.root.render(<MapWrapper />)
+          console.log('Destinations map component rendered successfully')
         }
       }, 0)
     } catch (error) {
@@ -59,8 +60,7 @@ class DestinationsMap extends HTMLElement {
       if (this.root) {
         this.root.unmount()
         this.root = null
-        this.shadowContainer = null
-        console.debug('Destinations map component unmounted')
+        console.log('Destinations map component unmounted')
       }
     } catch (error) {
       console.error('Error unmounting destinations map:', error)
