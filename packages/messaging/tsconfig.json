@@ -1,0 +1,14 @@
+{
+  "extends": "@galactic-tours/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es6"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+} 
