@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unknown-property */
-import { Destination } from '@/components/Map/Destination'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+
 import { useDestinations } from './hooks/useDestinations'
-import { DestinationData } from './types'
+import type { DestinationData } from './types'
+
+import { Destination } from '@/components/Map/Destination'
 
 const Map = () => {
   const { destinations, activeDestination, handleDestinationClick } =

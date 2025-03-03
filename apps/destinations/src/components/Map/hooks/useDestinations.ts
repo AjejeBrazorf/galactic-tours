@@ -1,6 +1,8 @@
-import destinations from '@/data/destinations.json'
 import { useState } from 'react'
-import { DestinationData } from '../types'
+
+import type { DestinationData } from '../types'
+
+import destinations from '@/data/destinations.json'
 
 const typedDestinations: DestinationData[] = destinations.map((d) => ({
   ...d,

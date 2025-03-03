@@ -3,16 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -23,6 +13,7 @@
     "@react-three/drei": "^10.0.3",
     "@react-three/fiber": "^9.0.4",
     "@repo/typescript-config": "workspace:*",
+    "@repo/ui": "workspace:*",
     "react": "19.1.0-canary-22e39ea7-20250225",
     "react-dom": "19.1.0-canary-22e39ea7-20250225",
     "three": "^0.174.0",

@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 import { Html } from '@react-three/drei'
-import { ThreeEvent, useFrame } from '@react-three/fiber'
+import type { ThreeEvent } from '@react-three/fiber'
+import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
-import * as THREE from 'three'
+import type * as THREE from 'three'
 
 interface DestinationProps {
   id: string
@@ -45,7 +46,42 @@ export const Destination = ({
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation()
     console.debug(`Selected destination: ${name}`)
+
+    // Call the regular onClick handler
     onClick(id)
+
+    // Directly communicate with the parent window
+    if (typeof window !== 'undefined' && window.parent !== window) {
+      console.debug(
+        `Directly sending destination click message to parent for: ${name}`
+      )
+
+      try {
+        // Send the data directly to the parent window
+        window.parent.postMessage(
+          {
+            type: 'DIRECT_DESTINATION_SELECTED',
+            payload: {
+              id: id,
+              name: name,
+              position: position,
+              coordinates: {
+                x: position[0],
+                y: position[1],
+                z: position[2],
+              },
+              // Add more properties as needed
+              color: color,
+              timestamp: new Date().toISOString(),
+            },
+          },
+          '*'
+        )
+        console.debug('Direct message sent successfully')
+      } catch (error) {
+        console.error('Error sending direct message to parent:', error)
+      }
+    }
   }
 
   // Animation loop with safety checks
@@ -67,7 +103,7 @@ export const Destination = ({
       onPointerOut={handlePointerOut}
       onClick={handleClick}>
       <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial color={hovered ? '#ffffff' : color} />
+      <meshStandardMaterial color={active || hovered ? '#ffffff' : color} />
 
       <Html position={[0, 1.5, 0]} center distanceFactor={10}>
         <div
