@@ -1,4 +1,5 @@
-import { MessageBusOptions } from '../types'
+import type { MessageBusOptions } from '../types'
+
 import { MessageBus } from './message-bus'
 
 /**

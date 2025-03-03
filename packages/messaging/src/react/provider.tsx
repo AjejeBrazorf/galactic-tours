@@ -1,5 +1,7 @@
-import { createContext, ReactNode, useContext } from 'react'
-import { MessageBus } from '../core/message-bus'
+import type { ReactNode } from 'react'
+import { createContext, useContext } from 'react'
+
+import type { MessageBus } from '../core/message-bus'
 
 export const MessageBusContext = createContext<MessageBus | null>(null)
 
@@ -8,10 +10,10 @@ export interface MessageBusProviderProps {
   children: ReactNode
 }
 
-export function MessageBusProvider({
+export const MessageBusProvider = ({
   messageBus,
   children,
-}: MessageBusProviderProps) {
+}: MessageBusProviderProps) => {
   return (
     <MessageBusContext.Provider value={messageBus}>
       {children}

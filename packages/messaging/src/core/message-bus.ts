@@ -1,16 +1,14 @@
-import {
+import type {
   BaseMessage,
   ErrorMessage,
   Message,
   MessageBusOptions,
-  MessageDirection,
   MessageHandler,
   RequestMessage,
   ResponseMessage,
   SubscriptionOptions,
-  isRequestMessage,
-  isResponseMessage,
 } from '../types'
+import { MessageDirection, isRequestMessage, isResponseMessage } from '../types'
 
 /**
  * Default message bus options

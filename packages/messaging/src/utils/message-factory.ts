@@ -1,4 +1,5 @@
-import { BaseMessage, Message, MessageDirection } from '../types'
+import type { BaseMessage, Message } from '../types'
+import { MessageDirection } from '../types'
 
 export interface MessageTypeDefinition<T> {
   type: string

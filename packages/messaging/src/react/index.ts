@@ -1,4 +1,5 @@
-import { useMessaging, UseMessagingOptions } from './hooks'
+import type { UseMessagingOptions } from './hooks'
+import { useMessaging } from './hooks'
 import {
   MessageBusContext,
   MessageBusProvider,

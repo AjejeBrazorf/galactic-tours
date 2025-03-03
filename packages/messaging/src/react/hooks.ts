@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import {
+
+import type {
   Message,
   MessageBus,
   MessageDirection,
