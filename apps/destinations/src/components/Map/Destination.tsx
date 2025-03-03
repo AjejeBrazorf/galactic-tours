@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Html } from '@react-three/drei'
 import type { ThreeEvent } from '@react-three/fiber'
-import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import type * as THREE from 'three'
 
@@ -10,6 +9,7 @@ interface DestinationProps {
   name: string
   position: [number, number, number]
   active: boolean
+  radius: number
   color?: string
   onClick: (id: string) => void
 }
@@ -20,19 +20,20 @@ export const Destination = ({
   position,
   color = '#ff0000',
   active = false,
+  radius,
   onClick,
 }: DestinationProps) => {
   const [hovered, setHovered] = useState(false)
   const sphereRef = useRef<THREE.Mesh>(null)
-
-  // Safe hover handlers that check for browser environment
+  const geometryRef = useRef<THREE.SphereGeometry>(null)
   const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation()
     setHovered(true)
-    // Only modify cursor if window is defined
     if (typeof document !== 'undefined') {
       document.body.style.cursor = 'pointer'
     }
+    if (!geometryRef.current) return
+    geometryRef.current.scale(1.2, 1.2, 1.2)
   }
 
   const handlePointerOut = (e: ThreeEvent<PointerEvent>) => {
@@ -41,59 +42,14 @@ export const Destination = ({
     if (typeof document !== 'undefined') {
       document.body.style.cursor = 'auto'
     }
+    if (!geometryRef.current) return
+    geometryRef.current.scale(0.8, 0.8, 0.8)
   }
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation()
-    console.debug(`Selected destination: ${name}`)
-
-    // Call the regular onClick handler
     onClick(id)
-
-    // Directly communicate with the parent window
-    if (typeof window !== 'undefined' && window.parent !== window) {
-      console.debug(
-        `Directly sending destination click message to parent for: ${name}`
-      )
-
-      try {
-        // Send the data directly to the parent window
-        window.parent.postMessage(
-          {
-            type: 'DIRECT_DESTINATION_SELECTED',
-            payload: {
-              id: id,
-              name: name,
-              position: position,
-              coordinates: {
-                x: position[0],
-                y: position[1],
-                z: position[2],
-              },
-              // Add more properties as needed
-              color: color,
-              timestamp: new Date().toISOString(),
-            },
-          },
-          '*'
-        )
-        console.debug('Direct message sent successfully')
-      } catch (error) {
-        console.error('Error sending direct message to parent:', error)
-      }
-    }
   }
-
-  // Animation loop with safety checks
-  useFrame(() => {
-    if (!sphereRef.current) return
-
-    if (hovered) {
-      sphereRef.current.scale.set(1.2, 1.2, 1.2)
-    } else {
-      sphereRef.current.scale.set(1, 1, 1)
-    }
-  })
 
   return (
     <mesh
@@ -102,10 +58,10 @@ export const Destination = ({
       onPointerOver={handlePointerOver}
       onPointerOut={handlePointerOut}
       onClick={handleClick}>
-      <sphereGeometry args={[1, 32, 32]} />
+      <sphereGeometry ref={geometryRef} args={[radius, 32, 32]} />
       <meshStandardMaterial color={active || hovered ? '#ffffff' : color} />
 
-      <Html position={[0, 1.5, 0]} center distanceFactor={10}>
+      <Html position={[0, radius + 0.2, 0]} center distanceFactor={10}>
         <div
           key={id}
           style={{

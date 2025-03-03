@@ -20,12 +20,12 @@ const config: StorybookConfig = {
     if (!config.resolve) config.resolve = {}
     if (!config.resolve.alias) config.resolve.alias = {}
 
-    config.resolve.alias['@repo/ui'] = resolve(
+    config.resolve.alias['@galactic-tours/ui'] = resolve(
       __dirname,
       '../../../packages/ui/dist'
     )
 
-    config.resolve.alias['@repo/ui/theme.css'] = resolve(
+    config.resolve.alias['@galactic-tours/ui/theme.css'] = resolve(
       __dirname,
       '../../../packages/ui/dist/theme.css'
     )

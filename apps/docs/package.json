@@ -11,14 +11,14 @@
     "lint": "eslint src/stories/**/*.stories.tsx --max-warnings 0 --no-error-on-unmatched-pattern"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@galactic-tours/ui": "workspace:*",
     "@storybook/test": "8.6.2",
     "react": "19.1.0-canary-22e39ea7-20250225",
     "react-dom": "19.1.0-canary-22e39ea7-20250225"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@galactic-tours/eslint-config": "workspace:*",
+    "@galactic-tours/typescript-config": "workspace:*",
     "@storybook/addon-actions": "8.6.2",
     "@storybook/addon-essentials": "8.6.2",
     "@storybook/addon-interactions": "8.6.2",

@@ -1,0 +1,24 @@
+
+.destinationInfo {
+    padding: 1.5rem;
+    background-color: var(--color-dark-800);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+    h2 {
+      margin-top: 0;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+  
+    strong {
+      font-weight: 600;
+      
+    }
+  }
+  

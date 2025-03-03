@@ -1,4 +1,4 @@
-import { nextJsConfig } from '@repo/eslint-config/next-js'
+import { nextJsConfig } from '@galactic-tours/eslint-config/next-js'
 
 const eslintConfig = [...nextJsConfig]
 

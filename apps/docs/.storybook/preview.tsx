@@ -1,4 +1,4 @@
-import '@repo/ui/theme.css'
+import '@galactic-tours/ui/theme.css'
 import type { Preview } from '@storybook/react'
 
 const preview: Preview = {

@@ -1,4 +1,4 @@
-import { config } from '@repo/eslint-config/react'
+import { config } from '@galactic-tours/eslint-config/react'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config({

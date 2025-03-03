@@ -12,8 +12,9 @@
   "dependencies": {
     "@react-three/drei": "^10.0.3",
     "@react-three/fiber": "^9.0.4",
-    "@repo/typescript-config": "workspace:*",
-    "@repo/ui": "workspace:*",
+    "@galactic-tours/typescript-config": "workspace:*",
+    "@galactic-tours/ui": "workspace:*",
+    "@galactic-tours/messaging": "workspace:*",
     "react": "19.1.0-canary-22e39ea7-20250225",
     "react-dom": "19.1.0-canary-22e39ea7-20250225",
     "three": "^0.174.0",

@@ -10,7 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@galactic-tours/ui": "workspace:*",
+    "@galactic-tours/messaging": "workspace:*",
     "destinations": "workspace:*",
     "next": "15.2.0",
     "react": "19.1.0-canary-22e39ea7-20250225",
@@ -18,8 +19,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@galactic-tours/eslint-config": "workspace:*",
+    "@galactic-tours/typescript-config": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

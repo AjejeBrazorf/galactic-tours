@@ -20,7 +20,7 @@ const copyThemeCSS = () => {
       // Add a note in the ThemeProvider directory to help developers
       await fs.writeFile(
         resolve(__dirname, 'dist/ThemeProvider/README.md'),
-        '# ThemeProvider\n\nImportant: When using ThemeProvider, you should also import the CSS file:\n\n```js\nimport { ThemeProvider } from "@repo/ui/theme";\nimport "@repo/ui/theme.css";\n```\n'
+        '# ThemeProvider\n\nImportant: When using ThemeProvider, you should also import the CSS file:\n\n```js\nimport { ThemeProvider } from "@galactic-tours/ui/theme";\nimport "@galactic-tours/ui/theme.css";\n```\n'
       )
     },
   }

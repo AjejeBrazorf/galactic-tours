@@ -1,18 +1,23 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@galactic-tours/typescript-config/nextjs.json",
   "compilerOptions": {
     "paths": {
       "@/*": [
         "./src/*"
       ]},
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "typeRoots": ["./node_modules/@types", "./src/types.d.ts"]
   },
   "include": [
     "../../packages/typescript-config/next-env.d.ts",
     "../../packages/typescript-config/**/*.ts",
     "../../packages/typescript-config/**/*.tsx",
     "../../packages/typescript-config/.next/types/**/*.ts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

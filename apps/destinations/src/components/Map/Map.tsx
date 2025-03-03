@@ -2,40 +2,52 @@
 import { OrbitControls, Stars } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-import { useDestinations } from './hooks/useDestinations'
+import { useDestinations } from '@/providers/DestinationsProvider'
 import type { DestinationData } from './types'
 
 import { Destination } from '@/components/Map/Destination'
 
 const Map = () => {
-  const { destinations, activeDestination, handleDestinationClick } =
+  const { destinations, activeDestination, setActiveDestination } =
     useDestinations()
 
   const canvasStyle = {
+    padding: '0',
+    margin: '0',
+    height: '100vh',
     width: '100%',
-    height: '100%',
-    background: 'linear-gradient(to bottom, #1e1e2f, #2d2d44)',
+    background:
+      'radial-gradient(circle, rgb(17, 14, 72), rgb(34, 4, 47) 19%, var(--background) 60%)',
   }
+
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Canvas
-        camera={{ position: [0, 10, 25], fov: 60 }}
+        camera={{ position: [0, 0, 10], fov: 60 }}
         style={canvasStyle}
         shadows>
         <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} castShadow />
+        <pointLight position={[1, 2, 1]} intensity={30} castShadow />
 
-        <Stars radius={100} depth={50} count={5000} factor={4} />
+        <Stars
+          fade
+          saturation={1}
+          radius={100}
+          depth={50}
+          count={15000}
+          factor={4}
+        />
 
         {destinations.map((dest: DestinationData) => (
           <Destination
             key={dest.id}
             id={dest.id.toString()}
             name={dest.name}
+            radius={dest.radius}
             position={dest.position as [number, number, number]}
             color={dest.color || '#ff4400'}
             active={dest.id === activeDestination?.id}
-            onClick={handleDestinationClick}
+            onClick={() => setActiveDestination(dest)}
           />
         ))}
 

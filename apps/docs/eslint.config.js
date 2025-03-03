@@ -1,8 +1,8 @@
-import { config } from '@repo/eslint-config/react'
 import js from '@eslint/js'
+import { config } from '@galactic-tours/eslint-config/react'
+import reactRefresh from 'eslint-plugin-react-refresh'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
-import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default tseslint.config(
   { ignores: ['dist'] },
