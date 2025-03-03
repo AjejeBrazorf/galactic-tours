@@ -444,7 +444,9 @@ export class MessageBus {
       // Track the pending request
       this.pendingRequests.set(correlationId, {
         correlationId,
-        resolve,
+        resolve: (value: unknown) => {
+          resolve(value as TRes)
+        },
         reject,
         timeout: timeoutId,
       })
