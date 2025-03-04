@@ -1,46 +1,54 @@
 'use client'
 
+import { APP_CONFIG } from '@/appConfig'
 import {
-  createMessageBus,
   MessageBus,
-  MessageBusContext,
+  MessageProvider as MessagingPackageProvider,
+  useMessage as useMessagingMessage,
 } from '@galactic-tours/messaging'
-import { useContext, useEffect, useState } from 'react'
-
-const MessageContext = MessageBusContext
-
-export const useMessage = () => {
-  const messageBus = useContext<MessageBus | null>(MessageContext)
-  if (!messageBus) {
-    throw new Error('useMessageBus must be used within a MessageProvider')
-  }
-  return messageBus
-}
+import { useEffect, useRef, useState } from 'react'
 
 export const MessageProvider = ({
   children,
 }: {
   children: React.ReactNode
 }) => {
-  const [messageBus, setMessageBus] = useState<MessageBus | null>(null)
+  return (
+    <MessagingPackageProvider
+      appId='destinations'
+      debug={process.env.NODE_ENV === 'development'}
+      allowedOrigins={[
+        APP_CONFIG.SHELL_APP_URL,
+        APP_CONFIG.DESTINATION_APP_URL,
+      ]}>
+      {children}
+    </MessagingPackageProvider>
+  )
+}
+
+const noopMessageBus: MessageBus = {
+  send: () => {},
+  subscribe: () => () => {},
+  broadcast: () => {},
+}
+export const useMessage = () => {
+  const [isMounted, setIsMounted] = useState(false)
+  const messageBusRef = useRef<MessageBus | null>(null)
 
   useEffect(() => {
-    const bus = createMessageBus({
-      appId: 'destinations',
-      origin: {
-        allowedOrigins: ['http://localhost:3000'],
-        validateOrigin: true,
-      },
-    })
+    try {
+      messageBusRef.current = useMessagingMessage()
+    } catch (error) {
+      console.warn('Failed to access MessageBus directly, using fallback')
+      messageBusRef.current = noopMessageBus
+    }
 
-    setMessageBus(bus)
+    setIsMounted(true)
   }, [])
 
-  if (!messageBus) return null
+  if (!isMounted || !messageBusRef.current) {
+    return noopMessageBus
+  }
 
-  return (
-    <MessageContext.Provider value={messageBus}>
-      {children}
-    </MessageContext.Provider>
-  )
+  return messageBusRef.current
 }

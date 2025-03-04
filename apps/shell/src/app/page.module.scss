@@ -1,12 +1,9 @@
 .root {
   width: 100%;
-  max-width: 1200px;
   max-height: 100dvh;
   height: 100dvh;
-  margin: 0 auto;
-  padding: 2rem;
 
-  overflow: auto;
+  overflow: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
 
@@ -29,6 +26,12 @@
 .hero {
   text-align: center;
   height: 100dvh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .mapContainer {
@@ -37,7 +40,7 @@
   height: 100dvh;
 }
 
-.iframe {
+.map {
   width: 100%;
   height: 100%;
   border: none;

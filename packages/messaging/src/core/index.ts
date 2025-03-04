@@ -1,18 +1,7 @@
-import type { MessageBusOptions } from '../types'
-
-import { MessageBus } from './message-bus'
-
 /**
- * Create a message bus instance
- * @param options Configuration options for the message bus
- * @returns A new MessageBus instance
+ * Core Message Bus
+ *
+ * Core messaging functionality for cross-microfrontend communication.
  */
-export function createMessageBus(options: MessageBusOptions): MessageBus {
-  if (!window) {
-    throw new Error('MessageBus must be created in a browser environment')
-  }
-  return new MessageBus(options)
-}
 
-export * from '../types'
-export { MessageBus } from './message-bus'
+export * from './message-bus'

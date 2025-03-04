@@ -5,7 +5,8 @@ interface DestinationData {
   coordinates?: { x: number; y: number; z: number }
   position?: [number, number, number]
   description?: string
-  timestamp?: string
+  price?: number
+  distance?: number
 }
 
 import styles from './DestinationsDetails.module.scss'
@@ -14,7 +15,8 @@ export const DestinationsDetails: FC<DestinationData> = ({
   coordinates,
   position,
   description,
-  timestamp,
+  price,
+  distance,
 }) => {
   return (
     <div className={styles.destinationInfo}>
@@ -38,9 +40,14 @@ export const DestinationsDetails: FC<DestinationData> = ({
           <strong>Description:</strong> {description}
         </p>
       )}
-      {timestamp && (
+      {price && (
         <p>
-          <small>Selected at: {new Date(timestamp).toLocaleTimeString()}</small>
+          <strong>Price:</strong> {price}
+        </p>
+      )}
+      {distance && (
+        <p>
+          <strong>Distance:</strong> {distance}
         </p>
       )}
     </div>

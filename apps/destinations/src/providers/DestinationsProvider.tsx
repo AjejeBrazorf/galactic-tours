@@ -1,79 +1,114 @@
-import type { DestinationData } from '@/components/Map/types'
-import destinations from '@/data/destinations.json'
-import { useMessage } from '@/providers/MessageProvider'
-import { MessageDirection } from '@galactic-tours/messaging'
 import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react'
+  DESTINATION_MESSAGES,
+  Destination,
+  DestinationProvider as MessagingDestinationProvider,
+  useDestinations as useMessagingDestinations,
+} from '@galactic-tours/messaging'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { destinationService } from '../services/destination-service'
+import { useMessage } from './MessageProvider'
 
-const SHELL_APP_ID = 'shell'
+export const DestinationsProvider = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => {
+  const [destinations, setDestinationsData] = useState<Destination[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [isMounted, setIsMounted] = useState(false)
 
-const MESSAGE_TYPE = 'DESTINATION'
-
-const MESSAGES = {
-  [MESSAGE_TYPE]: {
-    SELECTED: 'destination.selected',
-    BOOKMARKED: 'destination.bookmarked',
-    RATED: 'destination.rated',
-  },
-}
-
-const typedDestinations: DestinationData[] = destinations.map((d) => ({
-  ...d,
-  position: d.position as [number, number, number],
-  texture: d.texture as { color: string; bump?: string },
-}))
-
-interface DestinationsContextType {
-  destinations: DestinationData[]
-  activeDestination: DestinationData | null
-  setActiveDestination: (destination: DestinationData | null) => void
-}
-
-const DestinationsContext = createContext<DestinationsContextType | null>(null)
-
-export const DestinationsProvider = ({ children }: { children: ReactNode }) => {
-  const [activeDestination, setActiveDestination] =
-    useState<DestinationData | null>(null)
-  const messageBus = useMessage()
   useEffect(() => {
-    try {
-      messageBus.send(MESSAGES.DESTINATION.SELECTED, activeDestination, {
-        target: SHELL_APP_ID,
-        direction: MessageDirection.CHILD_TO_PARENT,
-      })
-
-      console.debug('Message sent successfully')
-    } catch (error) {
-      console.error('Error sending message:', error)
+    const loadInitialData = async () => {
+      try {
+        const data = await destinationService.getDestinations()
+        setDestinationsData(data)
+        setIsLoading(false)
+        setIsMounted(true)
+      } catch (error) {
+        console.error('Failed to load initial destinations data:', error)
+        setIsLoading(false)
+        setIsMounted(true)
+      }
     }
-  }, [activeDestination, messageBus])
+
+    loadInitialData()
+  }, [])
   return (
-    <DestinationsContext.Provider
-      value={useMemo(
-        () => ({
-          destinations: typedDestinations,
-          activeDestination,
-          setActiveDestination,
-        }),
-        [activeDestination, setActiveDestination]
-      )}>
-      {children}
-    </DestinationsContext.Provider>
+    <MessagingDestinationProvider initialDestinations={destinations}>
+      {!isMounted || isLoading ? (
+        <div className='destinations-loading'>Loading destinations...</div>
+      ) : (
+        <DestinationsDataManager>{children}</DestinationsDataManager>
+      )}
+    </MessagingDestinationProvider>
   )
 }
 
-export const useDestinations = () => {
-  const context = useContext(DestinationsContext)
-  if (!context) {
-    throw new Error(
-      'useDestinations must be used within a DestinationsProvider'
+const DestinationsDataManager = ({
+  children,
+}: {
+  children: React.ReactNode
+}) => {
+  const messageBus = useMessage()
+  const {
+    destinations,
+    setDestinations,
+    setLoading,
+    provideDestinationDetails,
+  } = useMessagingDestinations()
+
+  const provideDetailsRef = useRef(provideDestinationDetails)
+
+  useEffect(() => {
+    provideDetailsRef.current = provideDestinationDetails
+  }, [provideDestinationDetails])
+
+  const handleDestinationDetailsRequest = useCallback(async (message: any) => {
+    const { destinationId } = message.payload
+
+    try {
+      const destination =
+        await destinationService.getDestinationById(destinationId)
+      provideDetailsRef.current(destination)
+    } catch (error) {
+      console.error(`Failed to fetch destination ${destinationId}:`, error)
+    }
+  }, [])
+
+  useEffect(() => {
+    const loadDestinations = async () => {
+      setLoading(true)
+      try {
+        if (destinations.length === 0) {
+          const data = await destinationService.getDestinations()
+          setDestinations(data)
+        }
+      } catch (error) {
+        console.error('Failed to load destinations:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadDestinations()
+  }, [setDestinations, setLoading])
+
+  useEffect(() => {
+    if (!messageBus) return
+
+    console.log('Setting up destination details subscription')
+    const unsubscribe = messageBus.subscribe(
+      DESTINATION_MESSAGES.DETAILS_REQUESTED,
+      handleDestinationDetailsRequest
     )
-  }
-  return context
+
+    return () => {
+      console.log('Cleaning up destination details subscription')
+      unsubscribe()
+    }
+  }, [messageBus, handleDestinationDetailsRequest])
+
+  return <>{children}</>
 }
+
+export { useMessagingDestinations as useDestinations }

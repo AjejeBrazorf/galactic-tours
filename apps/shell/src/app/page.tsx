@@ -1,28 +1,36 @@
 'use client'
 
-import React from 'react'
-
-import { DestinationsDetails } from '@/components/DestinationDetails'
+import { DestinationsDetails } from '@/components/DestinationDetails/DestinationsDetails'
 import { DestinationsMap } from '@/components/DestinationsMap'
-import { useDestinations } from '@/providers/DestinationsProvider'
-import clsx from 'clsx'
+import { useDestinations } from '@galactic-tours/messaging'
 import styles from './page.module.scss'
-const Home: React.FC = () => {
+export default function Home() {
   const { activeDestination } = useDestinations()
-
   return (
-    <div className={styles.root}>
-      <header id='hero' className={styles.hero}>
-        <h1>Galactic Tours Explorer</h1>
-        <p>Explore the best destinations in the galaxy.</p>
-      </header>
-
-      <section id='map' className={clsx(styles.mapContainer, styles.fullWidth)}>
-        <DestinationsMap className={styles.iframe} />
+    <main className={styles.root}>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>Galactic Tours</h1>
+        <p className={styles.description}>
+          Explore the wonders of the galaxy through our curated destinations
+        </p>
       </section>
-      {activeDestination && <DestinationsDetails {...activeDestination} />}
-    </div>
+
+      <section className={styles.mapContainer}>
+        <DestinationsMap className={styles.map} />
+      </section>
+      {activeDestination && (
+        <DestinationsDetails
+          name={activeDestination.name}
+          coordinates={{
+            x: activeDestination.position[0] || 0,
+            y: activeDestination.position[1] || 0,
+            z: activeDestination.position[2] || 0,
+          }}
+          description={activeDestination.description}
+          price={activeDestination.price}
+          distance={activeDestination.distance}
+        />
+      )}
+    </main>
   )
 }
-
-export default Home
