@@ -27,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "clsx": "^2.1.1",
     "sass": "^1.85.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",

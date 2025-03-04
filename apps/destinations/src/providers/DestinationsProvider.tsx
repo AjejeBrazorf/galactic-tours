@@ -26,12 +26,13 @@ const MESSAGES = {
 const typedDestinations: DestinationData[] = destinations.map((d) => ({
   ...d,
   position: d.position as [number, number, number],
+  texture: d.texture as { color: string; bump?: string },
 }))
 
 interface DestinationsContextType {
   destinations: DestinationData[]
   activeDestination: DestinationData | null
-  setActiveDestination: (destination: DestinationData) => void
+  setActiveDestination: (destination: DestinationData | null) => void
 }
 
 const DestinationsContext = createContext<DestinationsContextType | null>(null)
@@ -41,36 +42,15 @@ export const DestinationsProvider = ({ children }: { children: ReactNode }) => {
     useState<DestinationData | null>(null)
   const messageBus = useMessage()
   useEffect(() => {
-    if (activeDestination) {
-      try {
-        messageBus.send(
-          MESSAGES.DESTINATION.SELECTED,
-          {
-            ...activeDestination,
-            // Ensure we're sending a serializable object
-            position: activeDestination.position
-              ? [
-                  activeDestination.position[0],
-                  activeDestination.position[1],
-                  activeDestination.position[2],
-                ]
-              : undefined,
-            coordinates: {
-              x: activeDestination.position[0],
-              y: activeDestination.position[1],
-              z: activeDestination.position[2],
-            },
-          },
-          {
-            target: SHELL_APP_ID,
-            direction: MessageDirection.CHILD_TO_PARENT,
-          }
-        )
+    try {
+      messageBus.send(MESSAGES.DESTINATION.SELECTED, activeDestination, {
+        target: SHELL_APP_ID,
+        direction: MessageDirection.CHILD_TO_PARENT,
+      })
 
-        console.debug('Message sent successfully')
-      } catch (error) {
-        console.error('Error sending message:', error)
-      }
+      console.debug('Message sent successfully')
+    } catch (error) {
+      console.error('Error sending message:', error)
     }
   }, [activeDestination, messageBus])
   return (

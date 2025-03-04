@@ -1,8 +1,23 @@
 .root {
   width: 100%;
   max-width: 1200px;
+  max-height: 100dvh;
+  height: 100dvh;
   margin: 0 auto;
   padding: 2rem;
+
+  overflow: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+
+  & > * {
+    scroll-snap-align: start;
+  }
+
+  
+  & > .fullWidth {
+    margin: 0 -2rem;
+  }
 
   h1 {
     font-size: 2.5rem;
@@ -11,20 +26,15 @@
   }
 }
 
-.mainContent {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: 2fr 1fr;
-  }
+.hero {
+  text-align: center;
+  height: 100dvh;
 }
 
 .mapContainer {
   border-radius: 8px;
   overflow: hidden;
-  height: 600px;
+  height: 100dvh;
 }
 
 .iframe {

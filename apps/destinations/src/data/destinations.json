@@ -1,42 +1,77 @@
 [
   {
     "id": 1,
-    "name": "Mars",
-    "position": [2, 0, 0],
-    "color": "red",
-    "radius": 0.5,
-    "description": "The Red Planet"
+    "name": "Jupiter",
+    "position": [8, 12, -3],
+    "color": "brown",
+    "radius": 0.7,
+    "description": "The Gas Giant",
+    "emission": 5,
+    "texture": {
+      "color": "/textures/jupiter/color.jpg"
+    }
   },
   {
     "id": 2,
-    "name": "Venus",
-    "position": [-2, 1, 0],
-    "color": "orange",
-    "radius": 0.4,
-    "description": "The Hottest Planet"
+    "name": "Mercury",
+    "position": [10, -5, 3],
+    "color": "gray",
+    "radius": 0.2,
+    "description": "The Smallest Planet",
+    "emission": 2,
+    "texture": {
+      "color": "/textures/mercury/color.jpg",
+      "bump": "/textures/mercury/bump.jpg"
+    }
   },
   {
     "id": 3,
-    "name": "Jupiter",
-    "position": [0, 2, -1],
-    "color": "brown",
-    "radius": 0.7,
-    "description": "The Gas Giant"
+    "name": "Uranus",
+    "position": [-12, 8, 10],
+    "color": "lightblue",
+    "radius": 0.6,
+    "description": "The Ice Giant",
+    "emission": 3,
+    "texture": {
+      "color": "/textures/uranus/color.jpg"
+    }
   },
   {
     "id": 4,
-    "name": "Europa",
-    "position": [0, -2, 1],
-    "color": "lightblue",
-    "radius": 0.3,
-    "description": "Jupiter's Moon"
+    "name": "Sun",
+    "position": [0, 0, 0],
+    "color": "yellow",
+    "radius": 1.0,
+    "description": "The Center of the Solar System",
+    "emission": 100,
+    "texture": {
+      "color": "/textures/sun/color.jpg"
+    }
   },
   {
     "id": 5,
-    "name": "Kepler-452b",
-    "position": [-3, -1, 2],
-    "color": "green",
+    "name": "Venus",
+    "position": [-9, 10, -5],
+    "color": "orange",
+    "radius": 0.4,
+    "description": "The Hottest Planet",
+    "emission": 4,
+    "texture": {
+      "color": "/textures/venus/color.jpg",
+      "bump": "/textures/venus/bump.jpg"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Earth",
+    "position": [7, -8, 5],
+    "color": "blue",
     "radius": 0.5,
-    "description": "Earth's Cousin"
+    "description": "The Blue Planet",
+    "emission": 1,
+    "texture": {
+      "color": "/textures/earth/color.jpg",
+      "bump": "/textures/earth/bump.jpg"
+    }
   }
 ]

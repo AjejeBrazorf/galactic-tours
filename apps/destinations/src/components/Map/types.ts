@@ -4,5 +4,10 @@ export type DestinationData = {
   position: [number, number, number]
   color: string
   radius: number
+  texture: {
+    color: string
+    bump?: string
+  }
+  emission: number
   description: string
 }

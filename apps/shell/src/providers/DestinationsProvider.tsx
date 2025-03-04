@@ -39,7 +39,7 @@ interface DestinationData {
 
 interface DestinationsContextType {
   activeDestination: DestinationData | null
-  setActiveDestination: (destination: DestinationData) => void
+  setActiveDestination: (destination: DestinationData | null) => void
 }
 const DestinationsContext = createContext<DestinationsContextType | null>(null)
 

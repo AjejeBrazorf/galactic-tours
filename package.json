@@ -1,6 +1,7 @@
 {
   "name": "galactic-tours",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "build:shell": "turbo run build --filter=shell...",
@@ -23,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
     "prettier": "3.5.0",
