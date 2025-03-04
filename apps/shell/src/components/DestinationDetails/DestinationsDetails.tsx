@@ -9,6 +9,8 @@ interface DestinationData {
   distance?: number
 }
 
+import { useDestinations } from '@galactic-tours/messaging'
+import { Button } from '@galactic-tours/ui'
 import styles from './DestinationsDetails.module.scss'
 export const DestinationsDetails: FC<DestinationData> = ({
   name,
@@ -18,8 +20,12 @@ export const DestinationsDetails: FC<DestinationData> = ({
   price,
   distance,
 }) => {
+  const { selectDestination } = useDestinations()
   return (
     <div className={styles.destinationInfo}>
+      <Button variant='secondary' onClick={() => selectDestination(null)}>
+        Back
+      </Button>
       <h2>{name}</h2>
       <p>
         <strong>Coordinates:</strong>

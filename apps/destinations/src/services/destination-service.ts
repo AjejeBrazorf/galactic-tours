@@ -43,9 +43,9 @@ export class MockDestinationService implements DestinationService {
     return this.destinations.filter(
       (d) =>
         d.name.toLowerCase().includes(lowercaseQuery) ||
-        d.description.toLowerCase().includes(lowercaseQuery) ||
+        d.description?.toLowerCase().includes(lowercaseQuery) ||
         (d.tags || []).some(
-          (tag) =>
+          (tag: string) =>
             typeof tag === 'string' &&
             tag.toLowerCase().includes(lowercaseQuery)
         )

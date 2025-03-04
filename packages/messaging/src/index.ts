@@ -15,6 +15,29 @@ export * from './providers/destination-provider'
 export * from './providers/message-provider'
 export * from './providers/system-provider'
 
+// Explicitly export message types
+export {
+  DESTINATION_MESSAGES,
+  SYSTEM_MESSAGES,
+} from './constants/message-types'
+
+// Re-export types explicitly
+export type {
+  Destination,
+  DestinationDetailsRequestedPayload,
+  DestinationDetailsResponsePayload,
+  DestinationSelectedPayload,
+  SystemReadyPayload,
+} from './constants/message-payloads'
+
+// Re-export providers and hooks explicitly
+export {
+  DestinationProvider,
+  useDestinations,
+} from './providers/destination-provider'
+export { MessageProvider, useMessage } from './providers/message-provider'
+export { SystemProvider, useSystem } from './providers/system-provider'
+
 // Export core message bus functionality
 export {
   createMessageBus,

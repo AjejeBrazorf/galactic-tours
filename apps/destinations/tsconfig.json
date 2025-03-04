@@ -14,8 +14,9 @@
     },
     "declaration": true,
     "declarationDir": "dist",
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": ["src"],
+  "include": ["src", "src/types/**/*.d.ts"],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -1,13 +1,20 @@
 'use client'
 
 import { APP_CONFIG } from '@/appConfig'
+
+import type { MessageBus } from '@galactic-tours/messaging'
 import {
-  MessageBus,
   MessageProvider as MessagingPackageProvider,
   useMessage as useMessagingMessage,
 } from '@galactic-tours/messaging'
 import { useEffect, useRef, useState } from 'react'
 
+/**
+ * Destinations app MessageProvider
+ *
+ * This component wraps the messaging package's MessageProvider to provide
+ * destinations-specific configuration.
+ */
 export const MessageProvider = ({
   children,
 }: {
@@ -16,11 +23,8 @@ export const MessageProvider = ({
   return (
     <MessagingPackageProvider
       appId='destinations'
-      debug={process.env.NODE_ENV === 'development'}
-      allowedOrigins={[
-        APP_CONFIG.SHELL_APP_URL,
-        APP_CONFIG.DESTINATION_APP_URL,
-      ]}>
+      debug={APP_CONFIG.DEBUG}
+      allowedOrigins={APP_CONFIG.getAllowedOrigins()}>
       {children}
     </MessagingPackageProvider>
   )

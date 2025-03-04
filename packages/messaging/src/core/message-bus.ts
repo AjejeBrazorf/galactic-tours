@@ -98,15 +98,34 @@ export function createMessageBus(options: MessageBusOptions): MessageBus {
       return true
     }
 
+    // In development, allow all localhost origins
+    if (
+      process.env.NODE_ENV === 'development' &&
+      (origin.startsWith('http://localhost:') ||
+        origin.startsWith('https://localhost:'))
+    ) {
+      return true
+    }
+
     // Check against allowed origins
-    return (
+    const isAllowed =
       options.allowedOrigins?.some((allowed) => {
         if (allowed === '*') {
           return true // Allow all origins (use with caution)
         }
         return origin === allowed
       }) ?? false
-    )
+
+    // Log detailed information about failed origin validation in non-production
+    if (!isAllowed && debug) {
+      console.warn(`[MessageBus:${appId}] Origin validation failed:`, {
+        receivedFrom: origin,
+        allowedOrigins: options.allowedOrigins,
+        locationOrigin: window.location.origin,
+      })
+    }
+
+    return isAllowed
   }
 
   // Set up event listener

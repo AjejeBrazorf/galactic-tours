@@ -23,10 +23,7 @@ export default function ClientProviders({
     <MessageProvider
       appId='shell'
       debug={process.env.NODE_ENV === 'development'}
-      allowedOrigins={[
-        APP_CONFIG.SHELL_APP_URL,
-        APP_CONFIG.DESTINATION_APP_URL,
-      ]}>
+      allowedOrigins={APP_CONFIG.getAllowedOrigins()}>
       <DestinationProvider initialDestinations={[]}>
         {children}
       </DestinationProvider>

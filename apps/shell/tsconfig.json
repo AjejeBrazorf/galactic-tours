@@ -7,7 +7,7 @@
       ]},
     "jsx": "preserve",
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./src/types.d.ts"]
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
   "include": [
     "../../packages/typescript-config/next-env.d.ts",
@@ -17,7 +17,8 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.d.ts"
+    "**/*.d.ts",
+    "src/types/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"
