@@ -10,13 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^10.0.3",
-    "@react-three/fiber": "^9.0.4",
+    "@galactic-tours/messaging": "workspace:*",
     "@galactic-tours/typescript-config": "workspace:*",
     "@galactic-tours/ui": "workspace:*",
-    "@galactic-tours/messaging": "workspace:*",
+    "@react-three/drei": "^10.0.3",
+    "@react-three/fiber": "^9.0.4",
     "react": "19.1.0-canary-22e39ea7-20250225",
     "react-dom": "19.1.0-canary-22e39ea7-20250225",
+    "react-router-dom": "^7.2.0",
     "three": "^0.174.0",
     "three-stdlib": "^2.35.14"
   },
@@ -27,6 +28,7 @@
     "@types/react-dom": "^19.0.4",
     "@types/three": "^0.174.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "clsx": "^2.0.0",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",

@@ -1,6 +1,5 @@
 'use client'
 
-import { DestinationsDetails } from '@/components/DestinationDetails/DestinationsDetails'
 import { DestinationsMap } from '@/components/DestinationsMap'
 import { useDestinations } from '@galactic-tours/messaging'
 import styles from './page.module.scss'
@@ -18,19 +17,6 @@ export default function Home() {
       <section className={styles.mapContainer}>
         <DestinationsMap className={styles.map} />
       </section>
-      {activeDestination && (
-        <DestinationsDetails
-          name={activeDestination.name}
-          coordinates={{
-            x: activeDestination.position[0] || 0,
-            y: activeDestination.position[1] || 0,
-            z: activeDestination.position[2] || 0,
-          }}
-          description={activeDestination.description}
-          price={activeDestination.price}
-          distance={activeDestination.distance}
-        />
-      )}
     </main>
   )
 }
