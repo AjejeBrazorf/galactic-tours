@@ -1,8 +1,8 @@
 export const PATHS = {
   HOME: '/',
-  MAP: '/map',
-  LIST: '/list',
-  DETAIL: '/detail',
+  MAP: 'map',
+  LIST: 'list',
+  DETAIL: 'detail',
 } as const
 
 export type PathsType = typeof PATHS
