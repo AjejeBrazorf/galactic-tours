@@ -1,10 +1,17 @@
 'use client'
 
-import { DestinationsMap } from '@/components/DestinationsMap'
 import { useDestinations } from '@galactic-tours/messaging'
+import { Button, ResponsiveDrawer } from '@galactic-tours/ui'
+
 import styles from './page.module.scss'
+
+import { DestinationDetail } from '@/components/DestinationsDetail'
+import { DestinationsList } from '@/components/DestinationsList'
+import { DestinationsMap } from '@/components/DestinationsMap'
+
 export default function Home() {
-  const { activeDestination } = useDestinations()
+  const { activeDestination, selectDestination } = useDestinations()
+
   return (
     <main className={styles.root}>
       <section className={styles.hero}>
@@ -14,8 +21,39 @@ export default function Home() {
         </p>
       </section>
 
-      <section className={styles.mapContainer}>
+      <section className={styles.destinationsSection}>
         <DestinationsMap className={styles.map} />
+        <ResponsiveDrawer
+          open={true}
+          actions={
+            activeDestination
+              ? [
+                  <Button
+                    variant='text'
+                    key='back'
+                    onClick={() => {
+                      selectDestination(null)
+                    }}>
+                    Back
+                  </Button>,
+                ]
+              : []
+          }>
+          {!activeDestination && (
+            <>
+              <h2>Select a destination</h2>
+              <DestinationsList className={styles.list} />
+            </>
+          )}
+          {activeDestination && (
+            <>
+              <DestinationDetail
+                className={styles.detail}
+                destinationId={activeDestination.id}
+              />
+            </>
+          )}
+        </ResponsiveDrawer>
       </section>
     </main>
   )

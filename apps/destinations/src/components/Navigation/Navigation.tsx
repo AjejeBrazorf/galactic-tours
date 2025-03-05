@@ -1,6 +1,10 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { PathKeys, PATHS } from '../../routes/PATHS'
+
+import type { PathKeys } from '../../routes/PATHS'
+import { getDetailPath, PATHS } from '../../routes/PATHS'
+
+import { useDestinations } from '@/providers/DestinationsProvider'
 
 interface NavigationProps {
   onViewChange?: (view: PathKeys) => void
@@ -13,6 +17,21 @@ export const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { activeDestination } = useDestinations()
+
+  const handleRouteClick = (route: PathKeys) => {
+    if (onViewChange) {
+      onViewChange(route)
+      return
+    }
+
+    // For detail route, use the active destination ID if available
+    if (route === 'DETAIL' && activeDestination) {
+      navigate(getDetailPath(activeDestination.id))
+    } else {
+      navigate(PATHS[route])
+    }
+  }
 
   return (
     <div
@@ -27,13 +46,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {routes?.map((route) => (
         <button
           key={route}
-          onClick={() => {
-            if (onViewChange) {
-              onViewChange(route)
-              return
-            }
-            navigate(PATHS[route])
-          }}
+          onClick={() => handleRouteClick(route)}
           style={{
             padding: '8px 16px',
             backgroundColor:

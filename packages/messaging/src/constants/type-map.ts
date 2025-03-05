@@ -6,11 +6,10 @@
  * domain-specific types in their own files.
  */
 
-import {
-  DESTINATION_MESSAGES,
-  DestinationPayloadMap,
-} from './destination-types'
-import { SYSTEM_MESSAGES, SystemPayloadMap } from './system-types'
+import type { DestinationPayloadMap } from './destination-types'
+import { DESTINATION_MESSAGES } from './destination-types'
+import type { SystemPayloadMap } from './system-types'
+import { SYSTEM_MESSAGES } from './system-types'
 
 /**
  * Combined payload map for all message types

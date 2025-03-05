@@ -1,4 +1,5 @@
 import type { Destination } from '@galactic-tours/messaging'
+
 import mockData from '../data/destinations.json'
 
 export interface DestinationService {

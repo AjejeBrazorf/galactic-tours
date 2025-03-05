@@ -5,14 +5,16 @@
  * Creates and manages the message bus used by all other providers.
  */
 
-import React, { createContext, ReactNode, useContext, useEffect } from 'react'
-import { SystemReadyPayload } from '../constants/message-payloads'
+import type { ReactNode } from 'react'
+import React, { createContext, useContext, useEffect } from 'react'
+
+import type { SystemReadyPayload } from '../constants/message-payloads'
 import { SYSTEM_MESSAGES } from '../constants/message-types'
+import type { MessageBus } from '../core/message-bus'
 import {
   createMessageBus,
   createTypedMessageSender,
   createTypedMessageSubscriber,
-  MessageBus,
 } from '../core/message-bus'
 
 // Context to hold the message bus

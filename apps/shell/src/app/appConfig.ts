@@ -28,6 +28,13 @@ export const APP_CONFIG = {
           title: 'Destinations List',
         },
       },
+      detail: {
+        enabled: true,
+        iframe: {
+          src: (id: string) => `${DESTINATION_APP_URL}/detail?id=${id}`,
+          title: 'Destinations Detail',
+        },
+      },
     },
   },
 

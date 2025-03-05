@@ -1,7 +1,10 @@
 import '@galactic-tours/ui/theme.css'
 import type { Metadata } from 'next'
-import { JSX } from 'react'
+import type { JSX } from 'react'
+
 import ClientProviders from '../providers/ClientProviders'
+
+import styles from './layout.module.scss'
 
 export const metadata: Metadata = {
   title: 'Galactic Tours',
@@ -20,7 +23,7 @@ export default function RootLayout({
   children: JSX.Element | JSX.Element[]
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' className={styles.root}>
       <body>
         <ClientProviders>{children}</ClientProviders>
       </body>

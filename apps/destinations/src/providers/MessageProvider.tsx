@@ -1,13 +1,8 @@
 'use client'
 
-import { APP_CONFIG } from '@/appConfig'
+import { MessageProvider as BaseMessageProvider } from '@galactic-tours/messaging'
 
-import type { MessageBus } from '@galactic-tours/messaging'
-import {
-  MessageProvider as MessagingPackageProvider,
-  useMessage as useMessagingMessage,
-} from '@galactic-tours/messaging'
-import { useEffect, useRef, useState } from 'react'
+import { APP_CONFIG } from '@/appConfig'
 
 /**
  * Destinations app MessageProvider
@@ -21,38 +16,11 @@ export const MessageProvider = ({
   children: React.ReactNode
 }) => {
   return (
-    <MessagingPackageProvider
+    <BaseMessageProvider
       appId='destinations'
       debug={APP_CONFIG.DEBUG}
       allowedOrigins={APP_CONFIG.getAllowedOrigins()}>
       {children}
-    </MessagingPackageProvider>
+    </BaseMessageProvider>
   )
-}
-
-const noopMessageBus: MessageBus = {
-  send: () => {},
-  subscribe: () => () => {},
-  broadcast: () => {},
-}
-export const useMessage = () => {
-  const [isMounted, setIsMounted] = useState(false)
-  const messageBusRef = useRef<MessageBus | null>(null)
-
-  useEffect(() => {
-    try {
-      messageBusRef.current = useMessagingMessage()
-    } catch (error) {
-      console.warn('Failed to access MessageBus directly, using fallback')
-      messageBusRef.current = noopMessageBus
-    }
-
-    setIsMounted(true)
-  }, [])
-
-  if (!isMounted || !messageBusRef.current) {
-    return noopMessageBus
-  }
-
-  return messageBusRef.current
 }

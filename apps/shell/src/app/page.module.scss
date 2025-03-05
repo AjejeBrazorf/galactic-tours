@@ -34,15 +34,24 @@
   flex-direction: column;
 }
 
-.mapContainer {
-  border-radius: 8px;
+.destinationsSection {
+  position: relative;
   overflow: hidden;
   height: 100dvh;
 }
 
 .map {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 200px);
   border: none;
-  border-radius: 8px;
+  @media screen and (min-width: 768px) {
+    max-width: calc(100% - 400px);
+    height: 100%;
+  }
+}
+
+.list, .detail {
+  border: none;
+  width: 100%;
+  height: 100%;
 }

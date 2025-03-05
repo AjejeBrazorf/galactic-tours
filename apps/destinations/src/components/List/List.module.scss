@@ -1,9 +1,8 @@
-
-
-  .listItem {
-    cursor: pointer;
-    padding: 10px 0;
-    &.active {
-      font-weight: bold;
-    }
+.listItem {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 0;
+  &.active {
+    font-weight: bold;
   }
+}

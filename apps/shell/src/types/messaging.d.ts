@@ -20,7 +20,7 @@ declare module '@galactic-tours/messaging' {
     id: string
     name: string
     description?: string
-    [key: string]: any
+    [key: string]: unknown
   }
 
   export interface DestinationSelectedPayload {
@@ -44,6 +44,7 @@ declare module '@galactic-tours/messaging' {
   export const DestinationProvider: React.FC<{
     children: React.ReactNode
     initialDestinations?: Destination[]
+    enableRelay?: boolean // Whether this provider should relay messages to other instances
   }>
 
   export const MessageProvider: React.FC<{
@@ -64,28 +65,29 @@ declare module '@galactic-tours/messaging' {
     loading: boolean
     selectDestination: (destinationId: string | null) => void
     requestDestinationDetails: (destinationId: string) => void
-    [key: string]: any
+    provideDestinationDetails: (destination: Destination) => void
+    [key: string]: unknown
   }
 
-  export function useMessage(): any
-  export function useSystem(): any
+  export function useMessage(): unknown
+  export function useSystem(): unknown
 
   // Core functionality
-  export function createMessageBus(options: any): any
+  export function createMessageBus(options: unknown): unknown
   export function createTypedMessageSender<T>(
-    bus: any,
+    bus: unknown,
     messageType: string
   ): (payload: T) => void
   export function createTypedMessageSubscriber<T>(
-    bus: any,
+    bus: unknown,
     messageType: string
   ): (callback: (payload: T) => void) => () => void
 
   // Core types
   export interface MessageBus {
-    send: (type: string, data: any) => void
-    subscribe: (type: string, callback: (data: any) => void) => () => void
-    broadcast: (type: string, data: any) => void
+    send: (type: string, data: unknown) => void
+    subscribe: (type: string, callback: (data: unknown) => void) => () => void
+    broadcast: (type: string, data: unknown) => void
   }
 
   export interface MessageBusOptions {
@@ -94,5 +96,5 @@ declare module '@galactic-tours/messaging' {
     allowedOrigins?: string[]
   }
 
-  export type MessageSubscriber = (data: any, source?: any) => void
+  export type MessageSubscriber = (data: unknown, source?: unknown) => void
 }

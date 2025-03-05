@@ -1,8 +1,9 @@
 'use client'
 
-import { APP_CONFIG } from '@/app/appConfig'
 import { DestinationProvider, MessageProvider } from '@galactic-tours/messaging'
 import React from 'react'
+
+import { APP_CONFIG } from '@/app/appConfig'
 
 /**
  * Client Providers Component
@@ -24,7 +25,7 @@ export default function ClientProviders({
       appId='shell'
       debug={process.env.NODE_ENV === 'development'}
       allowedOrigins={APP_CONFIG.getAllowedOrigins()}>
-      <DestinationProvider initialDestinations={[]}>
+      <DestinationProvider initialDestinations={[]} enableRelay={true}>
         {children}
       </DestinationProvider>
     </MessageProvider>

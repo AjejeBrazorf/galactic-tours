@@ -5,19 +5,16 @@
  * Handles application readiness, errors, and configuration.
  */
 
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
-import {
+import type { ReactNode } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
+
+import type {
   SystemConfigPayload,
   SystemErrorPayload,
   SystemReadyPayload,
 } from '../constants/message-payloads'
 import { SYSTEM_MESSAGES } from '../constants/message-types'
+
 import {
   createTypedMessageSender,
   createTypedMessageSubscriber,

@@ -62,6 +62,7 @@ declare module '@galactic-tours/messaging' {
     loading: boolean
     selectDestination: (destinationId: string | null) => void
     requestDestinationDetails: (destinationId: string) => void
+    provideDestinationDetails: (destination: Destination) => void
     [key: string]: any
   }
 

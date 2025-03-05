@@ -30,7 +30,9 @@
     0.998 86.4%,
     1
   );
+  --border-radius: 8px;
   --easing-duration: 0.25s;
+  --shadow-color: rgba(0, 0, 0, 0.1);
   --primary: #5260ff;
   --secondary: #7cd584;
   --light: #cbcfff;
@@ -211,7 +213,6 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
   font-family: system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -1,5 +1,7 @@
+import type { FC } from 'react'
+import { useEffect, useState } from 'react'
+
 import { APP_CONFIG } from '@/app/appConfig'
-import { FC, useEffect, useState } from 'react'
 
 interface DestinationsListProps {
   className?: string

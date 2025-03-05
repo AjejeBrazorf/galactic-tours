@@ -1,28 +1,39 @@
-import { useDestinations } from '@/providers/DestinationsProvider'
-import styles from './List.module.scss'
-import React from 'react'
 import clsx from 'clsx'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import styles from './List.module.scss'
+
+import { getDetailPath } from '@/routes/PATHS'
+import { useDestinations } from '@/providers/DestinationsProvider'
+
 export const List: React.FC = () => {
   const { destinations, activeDestination, selectDestination } =
     useDestinations()
+  const navigate = useNavigate()
+
+  const handleDestinationClick = (destinationId: string) => {
+    // Update the active destination in the context
+    selectDestination(destinationId)
+
+    // Navigate to the detail view with the destination ID in the URL
+    navigate(getDetailPath(destinationId))
+  }
 
   return (
-    <div style={{ width: '100%', height: '100vh', padding: '20px' }}>
-      <h1>Destinations List</h1>
-      <ul>
-        {destinations.map((destination) => (
-          <li
-            key={destination.id}
-            className={clsx(
-              styles.listItem,
-              destination.id === activeDestination?.id && styles.active
-            )}
-            onClick={() => selectDestination(destination.id)}>
-            {destination.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {destinations.map((destination) => (
+        <li
+          key={destination.id}
+          className={clsx(
+            styles.listItem,
+            destination.id === activeDestination?.id && styles.active
+          )}
+          onClick={() => handleDestinationClick(destination.id)}>
+          {destination.name}
+        </li>
+      ))}
+    </ul>
   )
 }
 
